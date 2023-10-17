@@ -1,0 +1,28 @@
+doctype html  
+html 
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        //- Include the Tailwind CSS CDN or you can use a local installation
+        script(src="https://cdn.tailwindcss.com")
+        title Registration Page
+    body  
+        div.min-h-screen.flex.items-center.justify-center.bg-gray-100
+            div.bg-white.p-8.shadow-md.rounded-md.w-98
+                p.text-2xl.font-semibold.text-center.mb-4 CREATE YOUR ACCOUNT
+                form(action="/register", method="POST").mb-4 
+                    div
+                        label(class="block text-gray-600 font-semibold" for = "username") Username:
+                        input(name = "username" class="mt-1 px-4 py-2 border rounded-md w-full focus:ring focus:ring-indigo-300" required)
+                    br
+                    div
+                        label(class="block text-gray-600 font-semibold" for = "password") Password:
+                        input(name = "password" type ="password" class="mt-1 px-4 py-2 border rounded-md w-full focus:ring focus:ring-indigo-300" required)
+                    br
+                    button(type = "submit" class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300") Sign up
+                    a(href="/authentication" class ="hover:text-blue-700").ml-10.text-blue-500 Do you have already an account?
+
+                - if (messages && messages.error)
+                    p.text-red-500 #{messages.error}
+                - if (messages && messages.success)
+                    p.text-green-500 #{messages.success}

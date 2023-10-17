@@ -1,0 +1,28 @@
+doctype html 
+html 
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        //- Include the Tailwind CSS CDN or you can use a local installation
+        script(src="https://cdn.tailwindcss.com")
+        title Authentication Page
+    body  
+        div.min-h-screen.flex.items-center.justify-center.bg-gray-100
+            div.bg-white.p-8.shadow-md.rounded-md.w-96
+                p.text-2xl.font-semibold.text-center.mb-4 LOGIN TO YOUR ACCOUNT
+                form(action="/auth/login", method="POST").mb-4
+                        div
+                            label(class="block text-gray-600 font-semibold" for = "username") Username:
+                            input(name = "username" class="mt-1 px-4 py-2 border rounded-md w-full focus:ring focus:ring-indigo-300" required)
+                        br
+                        div
+                            label(class="block text-gray-600 font-semibold" for = "password") Password:
+                            input(name = "password" type ="password" class="mt-1 px-4 py-2 border rounded-md w-full focus:ring focus:ring-indigo-300" required)
+                        br
+                        div(style="display: flex; align-items: center;")
+                            button(type="submit" class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300") Sign in
+                            p.ml-12.mr-2 New?
+                            a(href="/registration" class="hover:text-blue-700 text-blue-500") Create an account
+
+                - if (messages && messages.error)
+                    p.text-red-500 #{messages.error}
